@@ -20,10 +20,7 @@ public class Level_01_Register {
 	  
   }
   
-  @Test
-  public void Register_03_Invalid_Password() {
-	  
-  }
+ 
 
   @AfterClass
   public void afterClass() {
