@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="false" name="NopCommerce - UI Automation">
+	
+  <parameter name="userUrl" value="https://demo.nopcommerce.com/" />	
+  <parameter name="adminUrl" value="https://admin-demo.nopcommerce.com/" />	
+  
   <test name="Run on Chrome">
+	<parameter name="browser" value="Chrome" />
     <classes>
-      <class name="com.nopcommorce.users.Level_01_Register"/>
+      <class name="com.nopcommorce.users.Level_06_Page_Generator_03"/>
     </classes>
-  </test> <!-- Test -->
+  </test>
+  
 </suite> <!-- Suite -->
