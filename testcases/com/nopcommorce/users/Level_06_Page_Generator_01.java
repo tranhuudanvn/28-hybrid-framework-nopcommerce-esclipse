@@ -10,10 +10,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.CustomerPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.users.CustomerPageObject;
+import pageObjects.users.HomePageObject;
+import pageObjects.users.LoginPageObject;
+import pageObjects.users.RegisterPageObject;
 
 public class Level_06_Page_Generator_01 extends BaseTest{
 

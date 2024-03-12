@@ -11,10 +11,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import commons.BasePage;
-import pageObjects.CustomerPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.users.CustomerPageObject;
+import pageObjects.users.HomePageObject;
+import pageObjects.users.LoginPageObject;
+import pageObjects.users.RegisterPageObject;
 
 public class Level_02_Apply_BasePage_03_Inheritance extends BasePage{
 	WebDriver driver;

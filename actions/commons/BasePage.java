@@ -1,20 +1,24 @@
 package commons;
 
-import java.sql.Driver;
 import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
+
+import pageObjects.admin.AdminLoginPageObject;
+import pageObjects.users.HomePageObject;
+import pageUIs.users.BasePageUI;
 
 public class BasePage {
 	// Chua nhung ham dung chung cho ca layer page objects
@@ -79,7 +83,7 @@ public class BasePage {
 		}
 	}
 	
-	private void sleepInSecond(long timeoutInSeconds) {
+	public void sleepInSecond(long timeoutInSeconds) {
 		try {
 			Thread.sleep(timeoutInSeconds * 1000); 
 		} catch (InterruptedException e) {
@@ -306,7 +310,42 @@ public class BasePage {
 		new WebDriverWait(driver, 15).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(xpathExpression)));
 	}
 	
-}
+	public HomePageObject userAbleToLogout(WebDriver driver) {
+
+		waitForElementClickable(driver, BasePageUI.USER_LOGOUT_LINK);
+		clickToElement(driver, BasePageUI.USER_LOGOUT_LINK);
+		return PageGeneratorManager.getHomePage(driver);
+	}
+	
+	public AdminLoginPageObject adminAbleToLogout(WebDriver driver) {
+
+		waitForElementClickable(driver, BasePageUI.ADMIN_LOGOUT_LINK);
+		clickToElement(driver, BasePageUI.ADMIN_LOGOUT_LINK);
+		return PageGeneratorManager.getAdminLoginPage(driver);
+	}
+	
+	public boolean isPageLoadedSuccess(WebDriver driver) {
+		WebDriverWait explicitWait = new WebDriverWait(driver, 30);
+		
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		
+		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
+			@Override
+			public Boolean apply(WebDriver driver) {
+				return (Boolean) jsExecutor.executeScript("return (window.jQuery != null) && (jQuery.active === 0);");
+			}
+		};
+		
+		ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
+			@Override
+			public Boolean apply(WebDriver driver) {
+				return (Boolean) jsExecutor.executeScript("return document.readyState").toString().equals("complete");
+			}
+		};
+		
+		return explicitWait.until(jQueryLoad) && explicitWait.until(jsLoad);
+	}
+} 
 
 
 

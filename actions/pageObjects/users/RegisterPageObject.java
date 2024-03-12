@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.users;
 
 import java.util.Random;
 
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import commons.PageGeneratorManager;
-import pageUIs.RegisterPageUI;
+import pageUIs.users.RegisterPageUI;
 
 public class RegisterPageObject extends BasePage {
 	private WebDriver driver;

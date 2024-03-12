@@ -7,7 +7,7 @@
   <test name="Run on Chrome">
 	<parameter name="browser" value="Chrome" />
     <classes>
-      <class name="com.nopcommorce.users.Level_06_Page_Generator_03"/>
+      <class name="com.nopcommorce.users.Level_09_Switch_Site_Url"/>
     </classes>
   </test>
   
